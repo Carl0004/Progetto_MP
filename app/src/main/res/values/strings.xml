@@ -20,4 +20,5 @@
     <string name="game_result">Result: </string>
     <string name="game_duration">Duration: </string>
     <string name="game_date">Date: </string>
+    <string name="game_version">Version: </string>
 </resources>

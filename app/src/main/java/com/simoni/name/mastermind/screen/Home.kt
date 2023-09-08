@@ -82,7 +82,7 @@ fun Home(vm: MyViewModel, navController: NavHostController) {
                 Spacer(modifier = Modifier.weight(0.7f))
 
                 Text(
-                    text = "Versione: ${BuildConfig.VERSION_NAME}",
+                    text = stringResource(id = R.string.game_version) + BuildConfig.VERSION_NAME,
                     modifier = Modifier
                         .padding(16.dp)
                         .align(Alignment.End),
