@@ -3,6 +3,7 @@ package com.simoni.name.mastermind.screen
 import android.content.res.Configuration
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.*
@@ -17,11 +18,13 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.simoni.name.mastermind.BuildConfig
 import com.simoni.name.mastermind.R
 import com.simoni.name.mastermind.model.MyViewModel
 import com.simoni.name.mastermind.model.utils.Difficulty
@@ -49,7 +52,17 @@ fun Home(vm: MyViewModel, navController: NavHostController) {
                     fontWeight = FontWeight.Bold
                 )
 
-                Spacer(modifier = Modifier.weight(0.5f))
+                //Spacer(modifier = Modifier.weight(0.1f))
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(300.dp) // Regola la dimensione dell'immagine secondo le tue esigenze
+                        .align(Alignment.CenterHorizontally)
+                )
+
+                Spacer(modifier = Modifier.weight(0.2f))
                 HomeButton(text = stringResource(id = R.string.difficulty_easy)) {
                     navController.navigate("GameView")
                     vm.instantGame.difficulty.value = Difficulty.Easy
@@ -67,6 +80,15 @@ fun Home(vm: MyViewModel, navController: NavHostController) {
                 HomeButton(text = stringResource(id = R.string.game_history), onClick = { navController.navigate("History") })
 
                 Spacer(modifier = Modifier.weight(0.7f))
+
+                Text(
+                    text = "Versione: ${BuildConfig.VERSION_NAME}",
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.End),
+                    color = W,
+                    fontSize = 10.sp,
+                )
             }
         }
 
